@@ -9,7 +9,7 @@ A collection of general-purpose Claude Code skills for developer productivity an
 
 - [Skills](#skills)
 - [How to install a skill](#how-to-install-a-skill)
-- [About](#about)
+- [Background](#background)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -65,9 +65,11 @@ Paste the skill content into a new file in your repo and reference it from your 
 
 ---
 
-## About
+## Background
 
-These skills grew out of research into Claude Code context bloat, where a production repo was loading ~9,859 tokens of spec files on every session — including exploratory sessions where none of those specs were relevant. Combined with a missing `.claudeignore`, build artefacts and lock files were also scannable mid-session, making actual per-session token cost effectively unbounded.
+This repo is meant to grow into a general library of Claude Code skills — it started with the one below, born out of a specific problem, but isn't limited to it. Contributions of new, unrelated skills are welcome.
+
+The first skill, `/optimise-claude-context`, grew out of research into Claude Code context bloat, where a production repo was loading ~9,859 tokens of spec files on every session — including exploratory sessions where none of those specs were relevant. Combined with a missing `.claudeignore`, build artefacts and lock files were also scannable mid-session, making actual per-session token cost effectively unbounded.
 
 The fix involved two things: tiered spec loading (a hook-level change) and a general-purpose audit skill that any team can run in any repo. This repo contains the general-purpose skill, extracted and generalised for public use.
 
