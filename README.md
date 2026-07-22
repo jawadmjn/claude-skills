@@ -1,14 +1,17 @@
-I built this after noticing that Claude Code was quietly loading far more context than it needed on every session (spec files, a bloated CLAUDE.md, stale auto-memory entries) even for simple one-line questions. Responses were slower and costs were creeping up with no tooling to surface or fix it. I extracted the audit skill from internal work, generalised it so it works in any repo, and published it here. If you are running Claude Code and wondering why sessions feel heavier than they should, this is for you.
-
-- Jawad
-
----
-
 # claude-skills
 
-A collection of Claude Code skills for developer productivity and AI session optimisation.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
-Skills here are general-purpose — they work in any repo, with any tech stack, regardless of whether you use a plugin.
+A collection of general-purpose Claude Code skills for developer productivity and AI session optimisation. Skills here work in any repo, with any tech stack, regardless of whether you use a plugin.
+
+## Table of contents
+
+- [Skills](#skills)
+- [How to install a skill](#how-to-install-a-skill)
+- [About](#about)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -62,13 +65,17 @@ Paste the skill content into a new file in your repo and reference it from your 
 
 ---
 
-## Background
+## About
 
-These skills grew out of research into Claude Code context bloat, where a production NestJS repo was loading ~9,859 tokens of spec files on every session — including exploratory sessions where none of those specs were relevant. Combined with a missing `.claudeignore`, node_modules and lock files were also scannable mid-session, making actual per-session token cost effectively unbounded.
+These skills grew out of research into Claude Code context bloat, where a production repo was loading ~9,859 tokens of spec files on every session — including exploratory sessions where none of those specs were relevant. Combined with a missing `.claudeignore`, build artefacts and lock files were also scannable mid-session, making actual per-session token cost effectively unbounded.
 
 The fix involved two things: tiered spec loading (a hook-level change) and a general-purpose audit skill that any team can run in any repo. This repo contains the general-purpose skill, extracted and generalised for public use.
 
-Full write-up: coming soon on Medium.
+I built this after noticing that Claude Code was quietly loading far more context than it needed on every session — spec files, a bloated CLAUDE.md, stale auto-memory entries — even for simple one-line questions. Responses were slower and costs were creeping up with no tooling to surface or fix it. If you're running Claude Code and wondering why sessions feel heavier than they should, this is for you.
+
+Full write-up: [How I Cut Claude Code Token Costs by 66% Per Session](https://medium.com/@jawadnawaz/how-i-cut-claude-code-token-costs-by-66-per-session-ac525589b7bb)
+
+— Jawad
 
 ---
 
@@ -78,3 +85,9 @@ Open a PR. Skills should be:
 - **General-purpose** — no assumptions about specific plugins, frameworks, or internal tools
 - **Prose-driven** — Claude performs the work; no shell scripts required
 - **Safe by default** — never delete content without showing the user what will be removed and getting confirmation
+
+---
+
+## License
+
+[MIT](LICENSE)
